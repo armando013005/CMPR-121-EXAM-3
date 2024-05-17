@@ -1,4 +1,4 @@
-﻿// Armando, Christopher, Duc, Thi
+// Armando, Christopher, Duc, Thi
 // CMPR121 - Professor Quach
 // Exam 3
 
@@ -38,8 +38,6 @@ void setColor(const string& color) {
 }
 
 void displayMenu() {
-    // Header
-    cout << "\n\t" + string(90, char(205)) << endl;
 
     // Stack and Queue section
     setColor("blue");
@@ -74,28 +72,30 @@ void displayMenu() {
     cout << "\n\t" + string(70, ' ') + string(1, char(179)) + "            " + string(1, char(179)) + "   out    " + string(1, char(179));
     cout << "\n\t" + string(70, ' ') + string(1, char(192)) + string(6, char(196)) + string(1, char(193)) + string(6, char(196)) + string(1, char(217)) + " " + string(6, ' ') + string(1, char(192)) + string(6, char(196)) + string(1, char(217));
 
+    // Header
+    cout << "\n\t" + string(90, char(205)) << endl;
     setColor("");
-    cout << "\n\tA container is a holder object that stores a collection of other objects (its elements). They\n"
-        << "\tare implemented as class templates, which allows great flexibility in the types supported as\n"
-        << "\telements. The container manages the storage space for its elements and provides member functions\n"
-        << "\tto access them, either directly or through iterators(reference objects with similar properties\n"
-        << "\tto pointers).\n"
-        << "\n\tCMPR121 Exam3: STL (Standard Template Library) Containers and Container Adaptors by Prof Q (5-13-2024)\n"
-        << "\t" + string(90, char(205)) << "\n";
+    cout << "\n\tA container is a holder object that stores a collection of other objects (its elements). They"
+        << "\n\tare implemented as class templates, which allows great flexibility in the types supported as"
+        << "\n\telements. The container manages the storage space for its elements and provides member functions"
+        << "\n\tto access them, either directly or through iterators(reference objects with similar properties"
+        << "\n\tto pointers)."
+        << "\n\nCMPR121 Exam3: STL (Standard Template Library) Containers and Container Adaptors by Armando, Chris, Duc, & Thi"
+        << "\n\t" + string(90, char(205));
 
     setColor("red");
-    cout << "\t\t\tV. Vector Container\n";
+    cout << "\n\tV. Vector Container";
     setColor("yellow");
-    cout << "\t\t\tL. List Container\n";
+    cout << "\n\tL. List Container";
     setColor("blue");
-    cout << "\t\t\tS. Stack (LIFO) Container Adaptor\n";
+    cout << "\n\tS. Stack (LIFO) Container Adaptor";
     setColor("green");
-    cout << "\t\t\tQ. Queue (FIFO) Container Adaptor\n";
+    cout << "\n\tQ. Queue (FIFO) Container Adaptor";
     setColor("");
-    cout << "\t" + string(90, char(196)) << "\n"
-        << "\t\t\tX. Exit\n"
-        << "\t" + string(90, char(205)) << "\n"
-        << "\t\t\tOption: ";
+    cout << "\n\t" + string(90, char(196))
+        << "\n\tX. Exit\n"
+        << "\n\t" + string(90, char(205))
+        << "\n\tOption: ";
 }
 
 void vectorMenu(vector<Rational>& rationals) {
@@ -133,74 +133,74 @@ void vectorMenu(vector<Rational>& rationals) {
 }
 
 void displayVectorMenu(const vector<Rational>& rationals) {
-    cout << "\n\tVectors (array) are same as dynamic arrays with the ability to resize itself automatically\n"
-        << "\twhen an element is inserted or deleted, that contains their storage being handled automatically\n"
-        << "\tby the container. Vector elements are placed in contiguous storage so that they can be accessed\n"
-        << "\tand traversed using iterators or indexes.\n";
+    cout << "\n\tVectors (array) are same as dynamic arrays with the ability to resize itself automatically"
+        << "\n\twhen an element is inserted or deleted, that contains their storage being handled automatically"
+        << "\n\tby the container. Vector elements are placed in contiguous storage so that they can be accessed"
+        << "\n\tand traversed using iterators or indexes.";
 
     if (rationals.empty()) {
-        cout << "\n\tThe current vector is empty.\n";
+        cout << "\n\tThe current vector is empty.";
     }
     else {
-        cout << "\n\tThe current vector elements are:\n";
+        cout << "\n\tThe current vector elements are: ";
         for (size_t i = 0; i < rationals.size(); ++i) {
-            cout << "\t" << i << ": " << rationals[i] << "\n";
+            cout << "\n\t" << i << ": " << rationals[i] << endl;
         }
     }
 
     setColor("red");
-    cout << "\n\n\t\t\tVector (list array) Menu Options\n";
-    cout << "\t" + string(90, char(205)) << "\n";
+    cout << "\n\tVector (list array) Menu Options";
+    cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\t\t\t1. Add an element\n"
-        << "\t\t\t2. Insert an element at index\n"
-        << "\t\t\t3. Retrieve an element from index\n"
-        << "\t\t\t4. Erase element(s)\n"
-        << "\t\t\t5. Sort the vector elements in ascending order\n"
-        << "\t\t\t6. Clear all elements\n";
+    cout << "\n\t1. Add an element"
+        << "\n\t2. Insert an element at index"
+        << "\n\t3. Retrieve an element from index"
+        << "\n\t4. Erase element(s)"
+        << "\n\t5. Sort the vector elements in ascending order"
+        << "\n\t6. Clear all elements";
     setColor("red");
-    cout << "\t" + string(90, char(196)) << "\n";
+    cout << "\n\t" + string(90, char(196));
     setColor("");
-    cout << "\t\t\t0. Return\n";
+    cout << "\n\t0. Return";
     setColor("red");
-    cout << "\t" + string(90, char(205)) << "\n";
+    cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\t\t\tOption: ";
+    cout << "\n\tOption: ";
 }
 
 void displayLinkedListMenu(const list<Rational>& rationals) {
-    cout << "\n\tLinked lists are sequence containers that allow non-contiguous memory allocation. As compared to\n"
-        << "\tvector, the linked list has slow traversal, but once a position has been found, insertion and\n"
-        << "\tdeletion are quicker.\n";
+    cout << "\n\tLinked lists are sequence containers that allow non-contiguous memory allocation. As compared to"
+        << "\n\tvector, the linked list has slow traversal, but once a position has been found, insertion and"
+        << "\n\tdeletion are quicker.";
 
     if (rationals.empty()) {
-        cout << "\n\tThe current list is empty.\n";
+        cout << "\n\tThe current list is empty." << endl;
     }
     else {
         cout << "\n\tThe current list elements are:\n";
         int index = 0;
         for (const auto& r : rationals) {
-            cout << "\t" << index++ << ": " << r << "\n";
+            cout << "\n\t" << index++ << ": " << r << endl;
         }
     }
 
     setColor("yellow");
-    cout << "\n\n\t\t\tLinked List Menu Options\n";
-    cout << "\t" + string(90, char(205)) << "\n";
+    cout << "\n\tLinked List Menu Options";
+    cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\t\t\t1. Add (push) an element\n"
-        << "\t\t\t2. Insert an element after\n"
-        << "\t\t\t3. Remove element(s)\n"
-        << "\t\t\t4. Sort the elements in ascending order\n"
-        << "\t\t\t5. Clear all elements\n";
+    cout << "\n\t1. Add (push) an element"
+        << "\n\t2. Insert an element after"
+        << "\n\t3. Remove element(s)"
+        << "\n\t4. Sort the elements in ascending order"
+        << "\n\t5. Clear all elements";
     setColor("yellow");
-    cout << "\t" + string(90, char(196)) << "\n";
+    cout << "\n\t" + string(90, char(196));
     setColor("");
-    cout << "\t\t\t0. Return\n";
+    cout << "\n\t0. Return";
     setColor("yellow");
-    cout << "\t" + string(90, char(205)) << "\n";
+    cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\t\t\tOption: ";
+    cout << "\n\tOption: ";
 }
 
 void linkedListMenu(list<Rational>& rationals) {
@@ -242,33 +242,33 @@ void displayStackMenu(const stack<Rational>& rationals) {
         << "\taccess its elements.\n";
 
     if (rationals.empty()) {
-        cout << "\n\tThe current stack is empty.\n";
+        cout << "\n\tThe current stack is empty.";
     }
     else {
-        cout << "\n\tThe current stack elements are (from top to bottom):\n";
+        cout << "\n\tThe current stack elements are (from top to bottom):";
         // Display stack elements
         stack<Rational> tempStack = rationals;
         while (!tempStack.empty()) {
-            cout << "\t" << tempStack.top() << "\n";
+            cout << "\n\t" << tempStack.top();
             tempStack.pop();
         }
     }
 
     setColor("blue");
-    cout << "\n\n\t\t\tStack Menu Options\n";
-    cout << "\t" + string(90, char(205)) << "\n";
+    cout << "\n\tStack Menu Options";
+    cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\t\t\t1. Push\n"
-        << "\t\t\t2. Top\n"
-        << "\t\t\t3. Pop\n";
+    cout << "\n\t1. Push\n"
+        << "\n\t2. Top\n"
+        << "\n\t3. Pop\n";
     setColor("blue");
-    cout << "\t" + string(90, char(196)) << "\n";
+    cout << "\n\t" + string(90, char(196));
     setColor("");
-    cout << "\t\t\t0. Return\n";
+    cout << "\n\t0. Return\n";
     setColor("blue");
-    cout << "\t" + string(90, char(205)) << "\n";
+    cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\t\t\tOption: ";
+    cout << "\n\tOption: ";
 }
 
 void stackMenu(stack<Rational>& rationals) {
@@ -297,10 +297,10 @@ void stackMenu(stack<Rational>& rationals) {
 }
 
 void displayQueueMenu(const queue<Rational>& rationals) {
-    cout << "\n\tQueues are type of container adaptors that operate in a first in first out (FIFO) type of\n"
-        << "\tarrangement. Elements are inserted/pushed (enqueued) at the rear and are removed/popped (dequeued)\n"
-        << "\tfrom the front. Queues use an encapsulated object of deque or list (sequential container class)\n"
-        << "\tas its underlying container, providing a specific set of member functions to access elements.\n";
+    cout << "\n\tQueues are type of container adaptors that operate in a first in first out (FIFO) type of"
+        << "\n\tarrangement. Elements are inserted/pushed (enqueued) at the rear and are removed/popped (dequeued)"
+        << "\n\tfrom the front. Queues use an encapsulated object of deque or list (sequential container class)"
+        << "\n\tas its underlying container, providing a specific set of member functions to access elements.";
 
     if (rationals.empty()) {
         cout << "\n\tThe current queue is empty.\n";
@@ -310,34 +310,34 @@ void displayQueueMenu(const queue<Rational>& rationals) {
         // Display queue elements
         queue<Rational> tempQueue = rationals;
         while (!tempQueue.empty()) {
-            cout << "\t" << tempQueue.front() << "\n";
+            cout << "\n\t" << tempQueue.front();
             tempQueue.pop();
         }
     }
 
     setColor("green");
-    cout << "\n\n\t\t\tQueue Menu Options\n";
-    cout << "\t" + string(90, char(205)) << "\n";
+    cout << "\n\tQueue Menu Options";
+    cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\t\t\t1. Enqueue (push into the rear)\n"
-        << "\t\t\t2. Rear (back)\n"
-        << "\t\t\t3. Front\n"
-        << "\t\t\t4. Dequeue (pop from the front)\n";
+    cout << "\n\t1. Enqueue (push into the rear)"
+        << "\n\t2. Rear (back)"
+        << "\n\t3. Front"
+        << "\n\t4. Dequeue (pop from the front)";
     setColor("green");
-    cout << "\t" + string(90, char(196)) << "\n";
+    cout << "\n\t" + string(90, char(196));
     setColor("");
-    cout << "\t\t\t0. Return\n";
+    cout << "\n\t0. Return";
     setColor("green");
-    cout << "\t" + string(90, char(205)) << "\n";
+    cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\t\t\tOption: ";
+    cout << "\n\tOption: ";
 }
 
 void queueMenu(queue<Rational>& rationals) {
     char option;
     do {
         displayQueueMenu(rationals);
-        option = inputChar("\n\tChoose an option (1-4, 0): ", "12340");
+        option = inputChar("Choose an option (1-4, 0): ", "12340");
 
         switch (option) {
         case '1': {
