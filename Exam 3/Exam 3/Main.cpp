@@ -3,13 +3,14 @@
 // Exam 3
 
 #include "Rational.h"
-#include "input.h" // Include the custom input functions header
+#include "input.h"
 #include <iostream>
 #include <string>
 #include <vector>
 #include <list>
 #include <stack>
 #include <queue>
+#include <algorithm>
 
 using namespace std;
 
@@ -23,6 +24,10 @@ void displayStackMenu(const stack<Rational>& rationals);
 void stackMenu(stack<Rational>& rationals);
 void displayQueueMenu(const queue<Rational>& rationals);
 void queueMenu(queue<Rational>& rationals);
+void displayVectorElements(const vector<Rational>& rationals, int index = 0);
+void displayListElements(const list<Rational>& rationals, list<Rational>::const_iterator it);
+void displayStackElements(stack<Rational> rationals);
+void displayQueueElements(queue<Rational> rationals);
 
 void setColor(const string& color) {
     if (color == "red")
@@ -38,7 +43,6 @@ void setColor(const string& color) {
 }
 
 void displayMenu() {
-
     // Stack and Queue section
     setColor("blue");
     cout << "\t" + string(70, ' ') + string(1, char(186)) + "  in/out  " + string(1, char(186)) + "            " + string(1, char(186)) + "   in     " + string(1, char(186));
@@ -94,8 +98,8 @@ void displayMenu() {
     setColor("");
     cout << "\n\t" + string(90, char(196))
         << "\n\tX. Exit\n"
-        << "\n\t" + string(90, char(205))
-        << "\n\tOption: ";
+        << "\n\t" + string(90, char(205));
+
 }
 
 void vectorMenu(vector<Rational>& rationals) {
@@ -106,21 +110,27 @@ void vectorMenu(vector<Rational>& rationals) {
 
         switch (option) {
         case '1': {
+
             break;
         }
         case '2': {
+
             break;
         }
         case '3': {
+
             break;
         }
         case '4': {
+
             break;
         }
         case '5': {
+
             break;
         }
         case '6': {
+
             break;
         }
         case '0': {
@@ -143,9 +153,7 @@ void displayVectorMenu(const vector<Rational>& rationals) {
     }
     else {
         cout << "\n\tThe current vector elements are: ";
-        for (size_t i = 0; i < rationals.size(); ++i) {
-            cout << "\n\t" << i << ": " << rationals[i] << endl;
-        }
+        displayVectorElements(rationals);
     }
 
     setColor("red");
@@ -168,6 +176,14 @@ void displayVectorMenu(const vector<Rational>& rationals) {
     cout << "\n\tOption: ";
 }
 
+void displayVectorElements(const vector<Rational>& rationals, int index) {
+    if (index >= rationals.size()) {
+        return;
+    }
+    cout << "\n\t" << index << ": " << rationals[index];
+    displayVectorElements(rationals, index + 1);
+}
+
 void displayLinkedListMenu(const list<Rational>& rationals) {
     cout << "\n\tLinked lists are sequence containers that allow non-contiguous memory allocation. As compared to"
         << "\n\tvector, the linked list has slow traversal, but once a position has been found, insertion and"
@@ -177,11 +193,8 @@ void displayLinkedListMenu(const list<Rational>& rationals) {
         cout << "\n\tThe current list is empty." << endl;
     }
     else {
-        cout << "\n\tThe current list elements are:\n";
-        int index = 0;
-        for (const auto& r : rationals) {
-            cout << "\n\t" << index++ << ": " << r << endl;
-        }
+        cout << "\n\tThe current list elements are:";
+        displayListElements(rationals, rationals.begin());
     }
 
     setColor("yellow");
@@ -200,29 +213,33 @@ void displayLinkedListMenu(const list<Rational>& rationals) {
     setColor("yellow");
     cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\n\tOption: ";
 }
 
 void linkedListMenu(list<Rational>& rationals) {
     char option;
     do {
         displayLinkedListMenu(rationals);
-        option = inputChar("\n\tChoose an option (1-5, 0): ", "123450");
+        option = inputChar("\n\tOption (1-5, 0): ", "123450");
 
         switch (option) {
         case '1': {
+
             break;
         }
         case '2': {
+
             break;
         }
         case '3': {
+
             break;
         }
         case '4': {
+
             break;
         }
         case '5': {
+
             break;
         }
         case '0': {
@@ -234,57 +251,62 @@ void linkedListMenu(list<Rational>& rationals) {
     } while (option != '0');
 }
 
+void displayListElements(const list<Rational>& rationals, list<Rational>::const_iterator it) {
+    if (it == rationals.end()) {
+        return;
+    }
+    cout << "\n\t" << distance(rationals.begin(), it) << ": " << *it;
+    displayListElements(rationals, ++it);
+}
+
 void displayStackMenu(const stack<Rational>& rationals) {
-    cout << "\n\tStacks are type of container adaptors with LIFO (Last In First Out) type of working, where a new\n"
-        << "\telement is added (pushed) at one end (top) and an element is removed (popped) from that end (top)\n"
-        << "\tonly. Stack uses an encapsulated object of either vector or deque (by default) or list (sequential\n"
-        << "\tcontainer class) as its underlying container, providing a specific set of member functions to\n"
-        << "\taccess its elements.\n";
+    cout << "\n\tStacks are type of container adaptors with LIFO (Last In First Out) type of working, where a new"
+        << "\n\telement is added (pushed) at one end (top) and an element is removed (popped) from that end (top)"
+        << "\n\tonly. Stack uses an encapsulated object of either vector or deque (by default) or list (sequential"
+        << "\n\tcontainer class) as its underlying container, providing a specific set of member functions to"
+        << "\n\taccess its elements.";
 
     if (rationals.empty()) {
         cout << "\n\tThe current stack is empty.";
     }
     else {
         cout << "\n\tThe current stack elements are (from top to bottom):";
-        // Display stack elements
-        stack<Rational> tempStack = rationals;
-        while (!tempStack.empty()) {
-            cout << "\n\t" << tempStack.top();
-            tempStack.pop();
-        }
+        displayStackElements(rationals);
     }
 
     setColor("blue");
     cout << "\n\tStack Menu Options";
     cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\n\t1. Push\n"
-        << "\n\t2. Top\n"
-        << "\n\t3. Pop\n";
+    cout << "\n\t1. Push"
+        << "\n\t2. Top"
+        << "\n\t3. Pop";
     setColor("blue");
     cout << "\n\t" + string(90, char(196));
     setColor("");
-    cout << "\n\t0. Return\n";
+    cout << "\n\t0. Return";
     setColor("blue");
     cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\n\tOption: ";
 }
 
 void stackMenu(stack<Rational>& rationals) {
     char option;
     do {
         displayStackMenu(rationals);
-        option = inputChar("\n\tChoose an option (1-3, 0): ", "1230");
+        option = inputChar("\n\tOption (1-3, 0): ", "1230");
 
         switch (option) {
         case '1': {
+
             break;
         }
         case '2': {
+
             break;
         }
         case '3': {
+
             break;
         }
         case '0': {
@@ -294,6 +316,16 @@ void stackMenu(stack<Rational>& rationals) {
             cout << "\n\tInvalid option. Please try again." << endl;
         }
     } while (option != '0');
+}
+
+void displayStackElements(stack<Rational> rationals) {
+    if (rationals.empty()) {
+        return;
+    }
+    Rational topElement = rationals.top();
+    rationals.pop();
+    cout << "\n\t" << topElement;
+    displayStackElements(rationals);
 }
 
 void displayQueueMenu(const queue<Rational>& rationals) {
@@ -303,16 +335,11 @@ void displayQueueMenu(const queue<Rational>& rationals) {
         << "\n\tas its underlying container, providing a specific set of member functions to access elements.";
 
     if (rationals.empty()) {
-        cout << "\n\tThe current queue is empty.\n";
+        cout << "\n\tThe current queue is empty.";
     }
     else {
-        cout << "\n\tThe current queue elements are (from front to rear):\n";
-        // Display queue elements
-        queue<Rational> tempQueue = rationals;
-        while (!tempQueue.empty()) {
-            cout << "\n\t" << tempQueue.front();
-            tempQueue.pop();
-        }
+        cout << "\n\tThe current queue elements are (from front to rear):";
+        displayQueueElements(rationals);
     }
 
     setColor("green");
@@ -330,26 +357,29 @@ void displayQueueMenu(const queue<Rational>& rationals) {
     setColor("green");
     cout << "\n\t" + string(90, char(205));
     setColor("");
-    cout << "\n\tOption: ";
 }
 
 void queueMenu(queue<Rational>& rationals) {
     char option;
     do {
         displayQueueMenu(rationals);
-        option = inputChar("Choose an option (1-4, 0): ", "12340");
+        option = inputChar("\n\tOption (1-4, 0): ", "12340");
 
         switch (option) {
         case '1': {
+
             break;
         }
         case '2': {
+
             break;
         }
         case '3': {
+
             break;
         }
         case '4': {
+
             break;
         }
         case '0': {
@@ -361,6 +391,16 @@ void queueMenu(queue<Rational>& rationals) {
     } while (option != '0');
 }
 
+void displayQueueElements(queue<Rational> rationals) {
+    if (rationals.empty()) {
+        return;
+    }
+    Rational frontElement = rationals.front();
+    rationals.pop();
+    cout << "\n\t" << frontElement;
+    displayQueueElements(rationals);
+}
+
 int main() {
     char option;
     vector<Rational> rationalsVector;
@@ -369,23 +409,29 @@ int main() {
     queue<Rational> rationalsQueue;
 
     do {
+        system("cls"); // Clear screen
         displayMenu();
-        option = inputChar("\n\tChoose an option (V, L, S, Q, X): ", "VLSQX");
+        option = inputChar("\n\tOption (V, L, S, Q, X): ", "VLSQX");
+        option = toupper(option); // Convert to uppercase
 
         switch (option) {
         case 'V': {
+            system("cls");
             vectorMenu(rationalsVector);
             break;
         }
         case 'L': {
+            system("cls");
             linkedListMenu(rationalsList);
             break;
         }
         case 'S': {
+            system("cls");
             stackMenu(rationalsStack);
             break;
         }
         case 'Q': {
+            system("cls");
             queueMenu(rationalsQueue);
             break;
         }
@@ -400,3 +446,4 @@ int main() {
 
     return 0;
 }
+
