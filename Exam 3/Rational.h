@@ -1,27 +1,28 @@
 #pragma once
 #include <iostream>
 
-namespace std {
-    class Rational {
-    private:
-        int numerator;
-        int denominator;
+using namespace std;
 
-        void Normalize();
+class Rational {
+private:
+	int numerator;
+	int denominator;
 
-    public:
-        Rational();
-        Rational(int num, int denom);
+	void Normalize();
 
-        void setNumerator(int num);
-        void setDenominator(int denom);
+public:
+	Rational();
+	Rational(int num, int denom);
 
-        int getNumerator() const;
-        int getDenominator() const;
+	void setNumerator(int num);
+	void setDenominator(int denom);
 
-        bool operator==(const Rational& other) const;
-        bool operator<(const Rational& other) const;
+	int getNumerator() const;
+	int getDenominator() const;
 
-        friend ostream& operator<<(ostream& out, const Rational& r);
-    };
-}
+	bool operator==(const Rational& other) const;
+	bool operator<(const Rational& other) const;
+
+	friend ostream& operator<<(ostream& out, const Rational& r);
+};
+
