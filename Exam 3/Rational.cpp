@@ -2,7 +2,7 @@
 #include <stdexcept>
 
 // Custom gcd function
-int gcd(int a, int b) {
+static int gcd(int a, int b) {
 	while (b != 0) {
 		int t = b;
 		b = a % b;
