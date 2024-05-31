@@ -1,40 +1,48 @@
 ﻿// Armando, Christopher, Duc, Thi
 // CMPR121 - Professor Quach
 // Exam 3
-
-#include "Rational.h"
+#include "Declarations.h"
 #include "input.h" // Include the custom input functions header
-#include <iostream>
-#include <string>
-#include <vector>
-#include <list>
-#include <stack>
-#include <queue>
 
-using namespace std;
 
-void setColor(const string& color);
-void displayMenu();
-void vectorMenu(vector<Rational>& rationals);
-void displayVectorMenu(const vector<Rational>& rationals);
-void displayLinkedListMenu(const list<Rational>& rationals);
-void linkedListMenu(list<Rational>& rationals);
-void displayStackMenu(const stack<Rational>& rationals);
-void stackMenu(stack<Rational>& rationals);
-void displayQueueMenu(const queue<Rational>& rationals);
-void queueMenu(queue<Rational>& rationals);
+int main() {
+    char option;
+    vector<Rational> rationalsVector;
+    list<Rational> rationalsList;
+    stack<Rational> rationalsStack;
+    queue<Rational> rationalsQueue;
 
-void setColor(const string& color) {
-    if (color == "red")
-        cout << "\033[31m";
-    else if (color == "yellow")
-        cout << "\033[33m";
-    else if (color == "blue")
-        cout << "\033[34m";
-    else if (color == "green")
-        cout << "\033[32m";
-    else
-        cout << "\033[0m";  // Reset to default
+    do {
+        displayMenu();
+        option = inputChar("\n\t\tChoose an option: ", "VLSQX");
+
+        switch (option) {
+        case 'V': {
+            vectorMenu(rationalsVector);
+            break;
+        }
+        case 'L': {
+            linkedListMenu(rationalsList);
+            break;
+        }
+        case 'S': {
+            stackMenu(rationalsStack);
+            break;
+        }
+        case 'Q': {
+            queueMenu(rationalsQueue);
+            break;
+        }
+        case 'X': {
+            cout << "\n\tExiting..." << endl;
+            break;
+        }
+        default:
+            cout << "\n\tInvalid option. Please try again." << endl;
+        }
+    } while (option != 'X');
+
+    return 0;
 }
 
 void displayMenu() {
@@ -42,39 +50,39 @@ void displayMenu() {
     cout << "\n\t" + string(90, char(205)) << endl;
 
     // Stack and Queue section
-    setColor("blue");
+    blue;
     cout << "\t" + string(70, ' ') + string(1, char(186)) + "  in/out  " + string(1, char(186)) + "            " + string(1, char(186)) + "   in     " + string(1, char(186));
     cout << "\n\t" + string(70, ' ') + string(1, char(186)) + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) + " " + string(12, ' ') + string(1, char(186)) + string(1, char(218)) + string(6, char(196)) + string(1, char(191));
     cout << "\n\t" + string(66, ' ') + "top" + string(1, char(187)) + string(1, char(186)) + " " + string(1, char(179)) + string(2, ' ') + string(6, ' ') + " " + string(1, char(186)) + "       rear" + string(1, char(187)) + string(1, char(186)) + " " + string(1, char(179)) + string(2, ' ') + string(6, ' ') + " " + string(1, char(186));
     cout << "\n\t" + string(70, ' ') + string(1, char(186)) + string(1, char(195)) + string(6, char(196)) + string(1, char(180)) + " " + string(12, ' ') + string(1, char(186)) + string(1, char(195)) + string(6, char(196)) + string(1, char(180));
 
     // Vector section
-    setColor("red");
+    red;
     cout << "\n\t" + string(8, ' ') + string(1, char(218)) + string(6, char(196)) + string(1, char(194)) + string(6, char(196)) + string(1, char(194)) + string(6, char(196)) + string(1, char(191)) + "      ";
-    setColor("yellow");
+    yellow;
     cout << string(1, char(218)) + string(6, char(196)) + string(1, char(194)) + string(6, char(196)) + string(1, char(194)) + string(6, char(196)) + string(1, char(191)) + "        ";
-    setColor("blue");
+    blue;
     cout << string(1, char(186)) + " " + string(1, char(179)) + " " + string(2, ' ') + string(6, ' ') + " " + string(1, char(186)) + "            " + string(1, char(179)) + " " + string(2, ' ') + string(6, ' ') + " " + string(1, char(186));
     cout << "\n\t" + string(8, ' ') + string(1, char(179)) + " ";
-    setColor(""); cout << "-13/24"; setColor("red"); cout << " " + string(1, char(179)) + " " + string(1, char(179)) + " " + string(1, ' ') + "  3/94" + string(1, char(179)) + " " + string(1, char(179)) + " " + string(1, ' ') + "-25/36" + string(1, char(179)) + "    ";
-    setColor("yellow");
+    res; cout << "-13/24"; red; cout << " " + string(1, char(179)) + " " + string(1, char(179)) + " " + string(1, ' ') + "  3/94" + string(1, char(179)) + " " + string(1, char(179)) + " " + string(1, ' ') + "-25/36" + string(1, char(179)) + "    ";
+    yellow;
     cout << string(1, char(195)) + string(6, char(196)) + string(1, char(194)) + string(6, char(196)) + string(1, char(194)) + string(6, char(196)) + string(1, char(180)) + "        ";
-    setColor("blue");
+    blue;
     cout << string(1, char(186)) + " " + string(1, char(179)) + " " + string(2, ' ') + string(6, ' ') + " " + string(1, char(186)) + "            " + string(1, char(179)) + " " + string(2, ' ') + string(6, ' ') + " " + string(1, char(186));
     cout << "\n\t" + string(8, ' ') + string(1, char(192)) + string(6, char(196)) + string(1, char(193)) + string(6, char(196)) + string(1, char(193)) + string(6, char(196)) + string(1, char(217)) + "    ";
-    setColor("yellow");
+    yellow;
     cout << string(1, char(179)) + " " + string(2, ' ') + " " + string(1, char(179)) + " " + string(2, ' ') + string(1, char(179)) + "        ";
-    setColor("blue");
+    blue;
     cout << string(1, char(186)) + " " + string(1, char(179)) + " " + string(2, ' ') + string(6, ' ') + " " + string(1, char(186)) + "            " + string(1, char(179)) + " " + string(2, ' ') + string(6, ' ') + " " + string(1, char(186));
     cout << "\n\t" + string(8, ' ') + " " + string(1, char(192)) + " " + string(2, ' ') + "0" + string(1, ' ') + string(2, ' ') + "1" + string(1, ' ') + string(2, ' ') + "2" + string(1, ' ') + string(6, ' ') + "           ";
-    setColor("yellow");
+    yellow;
     cout << string(1, char(179)) + " " + string(2, ' ') + string(6, ' ') + " " + string(1, char(179)) + "                                ";
-    setColor("blue");
+    blue;
     cout << string(1, char(186)) + " " + string(1, char(179)) + " " + string(2, ' ') + string(6, ' ') + " " + string(1, char(186)) + "            " + string(1, char(179)) + " " + string(2, ' ') + string(6, ' ') + " " + string(1, char(186));
     cout << "\n\t" + string(70, ' ') + string(1, char(179)) + "            " + string(1, char(179)) + "   out    " + string(1, char(179));
     cout << "\n\t" + string(70, ' ') + string(1, char(192)) + string(6, char(196)) + string(1, char(193)) + string(6, char(196)) + string(1, char(217)) + " " + string(6, ' ') + string(1, char(192)) + string(6, char(196)) + string(1, char(217));
 
-    setColor("");
+    res;
     cout << "\n\tA container is a holder object that stores a collection of other objects (its elements). They\n"
         << "\tare implemented as class templates, which allows great flexibility in the types supported as\n"
         << "\telements. The container manages the storage space for its elements and provides member functions\n"
@@ -83,18 +91,18 @@ void displayMenu() {
         << "\n\tCMPR121 Exam3: STL (Standard Template Library) Containers and Container Adaptors by Prof Q (5-13-2024)\n"
         << "\t" + string(90, char(205)) << "\n";
 
-    setColor("red");
+    red;
     cout << "\t\t\tV. Vector Container\n";
-    setColor("yellow");
+    yellow;
     cout << "\t\t\tL. List Container\n";
-    setColor("blue");
+    blue;
     cout << "\t\t\tS. Stack (LIFO) Container Adaptor\n";
-    setColor("green");
+    green;
     cout << "\t\t\tQ. Queue (FIFO) Container Adaptor\n";
-    setColor("");
+    res;
     cout << "\t" + string(90, char(196)) << "\n"
         << "\t\t\tX. Exit\n"
-        << "\t" + string(90, char(205)) << "\n";
+        << "\t" + string(90, char(205));
 }
 
 void vectorMenu(vector<Rational>& rationals) {
@@ -147,23 +155,23 @@ void displayVectorMenu(const vector<Rational>& rationals) {
         }
     }
 
-    setColor("red");
+    red;
     cout << "\n\n\t\t\tVector (list array) Menu Options\n";
     cout << "\t" + string(90, char(205)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\t1. Add an element\n"
         << "\t\t\t2. Insert an element at index\n"
         << "\t\t\t3. Retrieve an element from index\n"
         << "\t\t\t4. Erase element(s)\n"
         << "\t\t\t5. Sort the vector elements in ascending order\n"
         << "\t\t\t6. Clear all elements\n";
-    setColor("red");
+    red;
     cout << "\t" + string(90, char(196)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\t0. Return\n";
-    setColor("red");
+    red;
     cout << "\t" + string(90, char(205)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\tOption: ";
 }
 
@@ -183,22 +191,22 @@ void displayLinkedListMenu(const list<Rational>& rationals) {
         }
     }
 
-    setColor("yellow");
+    yellow;
     cout << "\n\n\t\t\tLinked List Menu Options\n";
     cout << "\t" + string(90, char(205)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\t1. Add (push) an element\n"
         << "\t\t\t2. Insert an element after\n"
         << "\t\t\t3. Remove element(s)\n"
         << "\t\t\t4. Sort the elements in ascending order\n"
         << "\t\t\t5. Clear all elements\n";
-    setColor("yellow");
+    yellow;
     cout << "\t" + string(90, char(196)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\t0. Return\n";
-    setColor("yellow");
+    yellow;
     cout << "\t" + string(90, char(205)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\tOption: ";
 }
 
@@ -253,20 +261,20 @@ void displayStackMenu(const stack<Rational>& rationals) {
         }
     }
 
-    setColor("blue");
+    blue;
     cout << "\n\n\t\t\tStack Menu Options\n";
     cout << "\t" + string(90, char(205)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\t1. Push\n"
         << "\t\t\t2. Top\n"
         << "\t\t\t3. Pop\n";
-    setColor("blue");
+    blue;
     cout << "\t" + string(90, char(196)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\t0. Return\n";
-    setColor("blue");
+    blue;
     cout << "\t" + string(90, char(205)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\tOption: ";
 }
 
@@ -314,21 +322,21 @@ void displayQueueMenu(const queue<Rational>& rationals) {
         }
     }
 
-    setColor("green");
+    green;
     cout << "\n\n\t\t\tQueue Menu Options\n";
     cout << "\t" + string(90, char(205)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\t1. Enqueue (push into the rear)\n"
         << "\t\t\t2. Rear (back)\n"
         << "\t\t\t3. Front\n"
         << "\t\t\t4. Dequeue (pop from the front)\n";
-    setColor("green");
+    green;
     cout << "\t" + string(90, char(196)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\t0. Return\n";
-    setColor("green");
+    green;
     cout << "\t" + string(90, char(205)) << "\n";
-    setColor("");
+    res;
     cout << "\t\t\tOption: ";
 }
 
@@ -360,42 +368,4 @@ void queueMenu(queue<Rational>& rationals) {
     } while (option != '0');
 }
 
-int main() {
-    char option;
-    vector<Rational> rationalsVector;
-    list<Rational> rationalsList;
-    stack<Rational> rationalsStack;
-    queue<Rational> rationalsQueue;
 
-    do {
-        displayMenu();
-        option = inputChar("\n\tChoose an option (V, L, S, Q, X): ", "VLSQX");
-
-        switch (option) {
-        case 'V': {
-            vectorMenu(rationalsVector);
-            break;
-        }
-        case 'L': {
-            linkedListMenu(rationalsList);
-            break;
-        }
-        case 'S': {
-            stackMenu(rationalsStack);
-            break;
-        }
-        case 'Q': {
-            queueMenu(rationalsQueue);
-            break;
-        }
-        case 'X': {
-            cout << "\n\tExiting..." << endl;
-            break;
-        }
-        default:
-            cout << "\n\tInvalid option. Please try again." << endl;
-        }
-    } while (option != 'X');
-
-    return 0;
-}
