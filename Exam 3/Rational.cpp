@@ -1,5 +1,6 @@
 #include "Rational.h"
 #include <stdexcept>
+#include <iomanip>
 
 // Custom gcd function
 static int gcd(int a, int b) {
@@ -37,7 +38,8 @@ void Rational::setNumerator(int num) {
 
 void Rational::setDenominator(int denom) {
 	if (denom == 0) {
-		throw invalid_argument("Denominator cannot be zero.");
+		throw invalid_argument("EXEPTION ERRO: Denominator cannot be zero.");
+		return;
 	}
 	denominator = denom;
 	Normalize();
@@ -60,6 +62,28 @@ bool Rational::operator<(const Rational& other) const {
 }
 
 ostream& operator<<(ostream& out, const Rational& r) {
-	out << r.numerator << '/' << r.denominator;
+	out << "\t" << string(1, 179) << setw(5) << right << r.numerator << '/' <<right<< r.denominator << string(1, 179);
 	return out;
+}
+
+istream& operator>>(istream& in, Rational& r)
+{
+	int dem = 0;
+	int num = 0;
+
+	cout << "\n\tEnter numerator: ";
+	cin >> num;
+	cout << "\n\tEnter denominator: ";
+	cin >> dem;
+
+	try {
+		r.setNumerator(num);
+		r.setDenominator(dem);
+	}
+	catch (const exception& e)
+	{
+		cout<<'\n' << e.what() << '\n';
+	}
+
+	return in;
 }

@@ -12,7 +12,6 @@ int main() {
 
     do {
         displayMenu();
-
         option = inputChar("\n\t\tChoose an option: ");
         switch (toupper(option)) {
         case 'V': {
@@ -46,9 +45,6 @@ int main() {
 
 void displayMenu() {
     cls();
-    // Header
-    cout << "\n\t" + string(90, char(205)) << endl;
-
     // Stack and Queue section
     blue;
     cout << "\t" + string(70, ' ') + string(1, char(186)) + "  in/out  " + string(1, char(186)) + "            " + string(1, char(186)) + "   in     " + string(1, char(186));
