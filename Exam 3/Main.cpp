@@ -94,15 +94,14 @@ void displayMenu() {
     setColor("");
     cout << "\t" + string(90, char(196)) << "\n"
         << "\t\t\tX. Exit\n"
-        << "\t" + string(90, char(205)) << "\n"
-        << "\t\t\tOption: ";
+        << "\t" + string(90, char(205)) << "\n";
 }
 
 void vectorMenu(vector<Rational>& rationals) {
     char option;
     do {
         displayVectorMenu(rationals);
-        option = inputChar("\n\tChoose an option (1-6, 0): ", "1234560");
+        option = inputChar("\t\tChoose an option (1-6, 0): ", "1234560");
 
         switch (option) {
         case '1': {
