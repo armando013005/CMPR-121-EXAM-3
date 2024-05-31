@@ -127,8 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="input.hpp" />
+    <ClCompile Include="linkedListOption.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="queueOption.cpp" />
     <ClCompile Include="Rational.cpp" />
+    <ClCompile Include="stackOption.cpp" />
+    <ClCompile Include="vectorOption.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Declarations.h" />
