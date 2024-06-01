@@ -22,6 +22,9 @@ using namespace std;
 //main menu
 void displayMenu();
 
+//displays a single square of ratipnal
+static void displaySingle(Rational r);
+
 //vector
 void vectorMenu(vector<Rational>& rationals);
 void displayVectorMenu(const vector<Rational>& rationals);
