@@ -23,7 +23,7 @@ Examples: 2/4 = 1/2 or -6/3 = -2/1.
 - An overload operator **<** that compares two Rational numbers; one is lesser than another.
 - An overload operator **<<** that returns a string expression of the numerator/denominator. Examples: “1/2”and “5/9”.
 
-**Note: MUST test all member functions thoroughly.**
+>**Note: MUST test all member functions thoroughly.**
 
 1. Create program that has the following menu options:
     - **Vector container**
