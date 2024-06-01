@@ -55,21 +55,21 @@ void challengeHeaderOutput(int challengeNumber, string challengeName)
 
 //PreCondition: spaces (boolean true or false)
 //PostCondition: returns a string including space character(s) or without space character 
-string inputString(string prompt, bool spaces)
-{
-	string input = "";
-
-	cout << "\n\t" + prompt;
-	if (spaces)
-		getline(cin, input);
-	else
-	{
-		cin >> input;
-		cin.clear();
-		cin.ignore(999, '\n');
-	}
-	return input;
-}
+//string inputString(string prompt, bool spaces)
+//{
+//	string input = "";
+//
+//	cout << "\n\t" + prompt;
+//	if (spaces)
+//		getline(cin, input);
+//	else
+//	{
+//		cin >> input;
+//		cin.clear();
+//		cin.ignore(999, '\n');
+//	}
+//	return input;
+//}
 
 string inputString(string prompt, bool spaces, istream& in)
 {
