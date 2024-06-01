@@ -22,8 +22,25 @@ using namespace std;
 //main menu
 void displayMenu();
 
-//displays a single square of ratipnal
-static void displaySingle(Rational r);
+//displays a single square of ratuibak
+static void displaySingle(Rational r) {
+    cout << "\n\t";
+    cout << char(218) << string(7, char(196)) << char(191) << '\n';//top line
+
+    //rational
+    cout << "\t" << string(1, char(179));
+    cout << setw(3) << right << r;
+    if (r.getNumerator() > 10 && r.getDenominator() < 10)
+        cout << right << setw(3) << string(1, char(179));
+    else if (r.getNumerator() > 10 || r.getDenominator() > 10)
+        cout << right << setw(2) << right << string(1, char(179));
+    else
+        cout << right << setw(3) << string(1, char(179));
+
+    cout<< '\n';
+    cout << '\t' << char(192) << string(7, char(196)) << char(217) << '\n';//bottom line
+
+}
 
 //vector
 void vectorMenu(vector<Rational>& rationals);

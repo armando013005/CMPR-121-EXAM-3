@@ -28,7 +28,7 @@ void vectorMenu(vector<Rational>& rationals)
 
             rationals.push_back(Rational(num, den));
 
-            cout << "\n\t\t" << rationals.back() << " will be added to the back of the vector.\n\n";
+            cout << "\n\t\t"; displaySingle(rationals.back());  cout << " will be added to the back of the vector.\n\n";
 
             break;
         }
@@ -44,7 +44,9 @@ void vectorMenu(vector<Rational>& rationals)
 
             rationals.insert(rationals.begin() + pos, Rational(num, den));
 
-            cout << "\n\t\t" << rationals[pos] << " will be inserted at index " << pos << " to the vector.\n\n";
+            cout << "\n\t\t";
+            displaySingle(rationals[pos]);
+            cout<<" will be inserted at index " << pos << " to the vector.\n\n";
 
             break;
         }
