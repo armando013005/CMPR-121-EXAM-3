@@ -24,5 +24,6 @@ public:
 	bool operator<(const Rational& other) const;
 
 	friend ostream& operator<<(ostream& out, const Rational& r);
+	friend istream& operator>>(istream& in, Rational& r);
 };
 
