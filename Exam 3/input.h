@@ -28,7 +28,7 @@ void challengeHeaderOutput(int challengeNumber, string challengeName);
 
 //PreCondition: spaces (boolean true or false)
 //PostCondition: returns a string including space character(s) or without space character 
-string inputString(string prompt, bool spaces);
+//string inputString(string prompt, bool spaces);
 
 string inputString(string prompt, bool spaces, istream& in);
 //PreCondition: valid string of options
