@@ -44,19 +44,20 @@ static void displayContent(stack<Rational> rationals)
     if(rationals.empty())
         return;
 
-    cout << " " << rationals.top();
+    cout << setw(2) << right << string(1, char(179));
+    cout << setw(3) << right << rationals.top();
+
+    if (rationals.top().getNumerator() > 10 && rationals.top().getDenominator() < 10)
+        cout << right << setw(3) << string(1, char(179));
+    else if (rationals.top().getNumerator() > 10 || rationals.top().getDenominator() > 10)
+        cout << right << setw(2) << right << string(1, char(179));
+    else
+        cout << right << setw(3) << string(1, char(179));
+
+
     rationals.pop();
 
     return displayContent(rationals);
-}
-
-static void displaySingle(Rational r)
-{
-    cout << "\n\t";
-	cout << char(218) << string(7, char(196)) << char(191)<<'\n';//top line
-    cout <<'\t' << r << '\n';//rational
-    cout <<'\t'<< char(192) << string(7, char(196)) << char(217) << '\n';//bottom line
-
 }
 
 void displayStackMenu(const stack<Rational>& rationals) {
@@ -114,6 +115,9 @@ void stackMenu(stack<Rational>& rationals) {
             {
                 cout <<"\n\t\t" << e.what();
             }
+            cout << "\n\t\t";
+            displaySingle(rationals.top());
+            cout << " will be inserted at index \n\n";
             break;
         }
         case 2: {

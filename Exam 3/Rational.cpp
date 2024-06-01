@@ -15,7 +15,7 @@ static int gcd(int a, int b) {
 
 void Rational::Normalize() {
 	if (denominator == 0) {
-		throw invalid_argument("Denominator cannot be zero.");
+		throw invalid_argument("EXEPTION ERROR: Denominator cannot be zero.");
 	}
 	if (denominator < 0) {
 		numerator = -numerator;
@@ -63,19 +63,17 @@ bool Rational::operator<(const Rational& other) const {
 }
 
 ostream& operator<<(ostream& out, const Rational& r) {
-	out << string(1, 179) << setw(5) << right << r.numerator << '/' <<right<< r.denominator << string(1, 179);
+	out << r.numerator << '/' << r.denominator ;
 	return out;
 }
 
 istream& operator>>(istream& in, Rational& r)
 {
-	int dem = 0;
-	int num = 0;
-
-	num = inputInteger("\n\tEnter numerator: (-99,99): ", -99, 99);
-	dem = inputInteger("\n\tEnter denominator: (-99,99): ", -99, 99);
+	cout << "\n\t\tInput a Rational number [numerator/denominator] to be inserted...";
+	int num = inputInteger("\n\t\t\tEnter a value (-99...99) for the numerator  : ", -99, 99);
+	int den = inputInteger("\t\t\tEnter a value (-99...99) for the denominator: ", -99, 99);
 
 	r.setNumerator(num);
-	r.setDenominator(dem);
+	r.setDenominator(den);
 	return in;
 }
