@@ -22,10 +22,11 @@ void displayLinkedListMenu(const list<Rational>& rationals) {
     cout << "\t" + string(90, char(205)) << "\n";
     res;
     cout << "\t\t\t1. Add (push) an element\n"
-        << "\t\t\t2. Insert an element after\n"
-        << "\t\t\t3. Remove element(s)\n"
-        << "\t\t\t4. Sort the elements in ascending order\n"
-        << "\t\t\t5. Clear all elements\n";
+         << "\t\t\t2. Insert an element after\n"
+         << "\t\t\t3. Remove element(s)\n"
+         << "\t\t\t4. Sort the elements in ascending order\n"
+         << "\t\t\t5. Clear all elements\n"
+         << "\t\t\t6. Exit.";
     yellow;
     cout << "\t" + string(90, char(196)) << "\n";
     res;
