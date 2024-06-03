@@ -47,8 +47,14 @@ void vectorMenu(vector<Rational>& rationals);
 void displayVectorMenu(const vector<Rational>& rationals);
 
 //linked list
-void displayLinkedListMenu(const list<Rational>& rationals);
-void linkedListMenu(list<Rational>& rationals);
+void displayLinkedListMenu(list<Rational>& rlist);
+void addElement(Rational& r, list<Rational>& rlist);
+void insertElement(Rational& r, list<Rational>& rlist);
+void removeElement(Rational& r, list<Rational>& rlist);
+void sortElement(list<Rational>& rlist);
+void clearElement(list<Rational>& rlist);
+void showListHelper(list<Rational>::iterator it, list<Rational>::iterator end);
+void showList(list<Rational>& rlist);
 
 //stack
 void displayStackMenu(const stack<Rational>& rationals);
