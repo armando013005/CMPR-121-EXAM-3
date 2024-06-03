@@ -19,7 +19,7 @@ int main() {
             break;
         }
         case 'L': {
-            linkedListMenu(rationalsList);
+            displayLinkedListMenu(rationalsList);
             break;
         }
         case 'S': {
