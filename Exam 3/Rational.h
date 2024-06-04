@@ -9,13 +9,13 @@ private:
 	int denominator;
 
 	void Normalize();
+	void setNumerator(int num);
+	void setDenominator(int denom);
+
 
 public:
 	Rational();
 	Rational(int num, int denom);
-
-	void setNumerator(int num);
-	void setDenominator(int denom);
 
 	int getNumerator() const;
 	int getDenominator() const;
