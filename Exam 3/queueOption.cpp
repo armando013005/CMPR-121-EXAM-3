@@ -1,7 +1,7 @@
 #include "Declarations.h"
 
 // Function to recursively display elements in the queue
-void displayQueueElements(queue<Rational> rationals) {
+void displayQueueElements(queue<Rational>& rationals) {
     if (rationals.empty()) {
         return;
     }
@@ -15,17 +15,16 @@ void displayQueueElements(queue<Rational> rationals) {
 }
 
 // Display the queue menu
-void displayQueueMenu(const queue<Rational>& rationals) {
+void displayQueueMenu(queue<Rational> rationals) {
     cls();
     cout << "\n\tQueues are type of container adaptors that operate in a first in first out (FIFO) type of\n"
-        << "\tarrangement. Elements are inserted/pushed (enqueued) at the rear and are removed/popped (dequeued)\n"
-        << "\tfrom the front. Queues use an encapsulated object of deque or list (sequential container class)\n"
-        << "\tas its underlying container, providing a specific set of member functions to access elements.\n";
+         << "\tarrangement. Elements are inserted/pushed (enqueued) at the rear and are removed/popped (dequeued)\n"
+         << "\tfrom the front. Queues use an encapsulated object of deque or list (sequential container class)\n"
+         << "\tas its underlying container, providing a specific set of member functions to access elements.\n";
 
     if (rationals.empty()) {
         cout << "\n\tThe current queue is empty.\n";
-    }
-    else {
+    } else {
         cout << "\n\tThe current queue contains " << rationals.size() << " element(s):\n";
         cout << "            " + string(8, char(205)) << "\n";
         cout << "            " + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) << "\n";
@@ -41,9 +40,9 @@ void displayQueueMenu(const queue<Rational>& rationals) {
     cout << "\t" + string(90, char(205)) << "\n";
     res();
     cout << "\t\t\t1. Enqueue (push into the rear)\n"
-        << "\t\t\t2. Rear (back)\n"
-        << "\t\t\t3. Front\n"
-        << "\t\t\t4. Dequeue (pop from the front)\n";
+         << "\t\t\t2. Rear (back)\n"
+         << "\t\t\t3. Front\n"
+         << "\t\t\t4. Dequeue (pop from the front)\n";
     green();
     cout << "\t" + string(90, char(196)) << "\n";
     res();
@@ -78,8 +77,7 @@ void displayRear(const queue<Rational>& rationals) {
     displayQueueMenu(rationals);
     if (rationals.empty()) {
         cout << "\nThe queue is empty.\n";
-    }
-    else {
+    } else {
         auto rational = rationals.back();
         cout << "\n\t\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) << "\n";
         cout << "\t\t │ " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " │ is at the back of the queue.\n";
@@ -95,8 +93,7 @@ void displayFront(const queue<Rational>& rationals) {
     displayQueueMenu(rationals);
     if (rationals.empty()) {
         cout << "\nThe queue is empty.\n";
-    }
-    else {
+    } else {
         auto rational = rationals.front();
         cout << "\n\t\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) << "\n";
         cout << "\t\t │ " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " │ is at the front of the queue.\n";
@@ -112,8 +109,7 @@ void dequeue(queue<Rational>& rationals) {
     displayQueueMenu(rationals);
     if (rationals.empty()) {
         cout << "\nThe queue is empty. Nothing to dequeue.\n";
-    }
-    else {
+    } else {
         auto rational = rationals.front();
         rationals.pop();
         cout << "\n\t\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) << "\n";
