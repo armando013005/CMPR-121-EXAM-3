@@ -22,31 +22,48 @@ void vectorMenu(vector<Rational>& rationals)
         {
         case 1: // Add an element
         {
-            cout << "\n\t\tInput a Rational number [numerator/denominator] to be added...";
-            int num = inputInteger("\n\t\t\tEnter a value (-99...99) for the numerator  : ", -99, 99);
-            int den = inputInteger("\t\t\tEnter a value (-99...99) for the denominator: ", -99, 99);
+            try
+            {
+                cout << "\n\t\tInput a Rational number [numerator/denominator] to be added...";
+                int num = inputInteger("\n\t\t\tEnter a value (-99...99) for the numerator  : ", -99, 99);
+                int den = inputInteger("\t\t\tEnter a value (-99...99) for the denominator: ", -99, 99);
 
-            rationals.push_back(Rational(num, den));
+                rationals.push_back(Rational(num, den));
 
-            cout << "\n\t\t"; displaySingle(rationals.back());  cout << " will be added to the back of the vector.\n\n";
+                cout << "\n\t\t"; displaySingle(rationals.back());  cout << " will be added to the back of the vector.\n\n";
+            }
+            catch (const exception& e)
+            {
+                cout << "\n\t\t" << e.what() << "\n";
+            }
 
             break;
         }
 
         case 2: // Insert an element
         {
-            cout << "\n\t\tInput a Rational number [numerator/denominator] to be inserted...";
-            int num = inputInteger("\n\t\t\tEnter a value (-99...99) for the numerator  : ", -99, 99);
-            int den = inputInteger("\t\t\tEnter a value (-99...99) for the denominator: ", -99, 99);
+            try
+            {
+                Rational temp;
+                /*cout << "\n\t\tInput a Rational number [numerator/denominator] to be inserted...";
+                int num = inputInteger("\n\t\t\tEnter a value (-99...99) for the numerator  : ", -99, 99);
+                int den = inputInteger("\t\t\tEnter a value (-99...99) for the denominator: ", -99, 99);*/
 
-            string promt = "\t\tInsert the Rational number at index (0..." + to_string(rationals.size() - 1) + ") of the vector: ";
-            int pos = inputInteger(promt, 0, int(rationals.size() - 1));
+                cin >> temp;
 
-            rationals.insert(rationals.begin() + pos, Rational(num, den));
+                string promt = "\t\tInsert the Rational number at index (0..." + to_string(rationals.size() - 1) + ") of the vector: ";
+                int pos = inputInteger(promt, 0, int(rationals.size() - 1));
 
-            cout << "\n\t\t";
-            displaySingle(rationals[pos]);
-            cout<<" will be inserted at index " << pos << " to the vector.\n\n";
+                rationals.insert(rationals.begin() + pos, temp);
+
+                cout << "\n\t\t";
+                displaySingle(rationals[pos]);
+                cout << " will be inserted at index " << pos << " to the vector.\n\n";
+            }
+            catch (const exception& e)
+            {
+                cout << "\n\t\t" << e.what() << "\n";
+            }
 
             break;
         }
@@ -117,6 +134,11 @@ void vectorMenu(vector<Rational>& rationals)
             catch (const string& error)
             {
                 cout << error;
+            }
+
+            catch (const exception& e)
+            {
+                cout << "\n\t\t" << e.what() << "\n";
             }
 
             break;

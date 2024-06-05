@@ -13,7 +13,7 @@ static int gcd(int a, int b)
 
 void Rational::Normalize() {
 	if (denominator == 0) {
-		throw invalid_argument("EXEPTION ERROR: Denominator cannot be zero.");
+		throw invalid_argument("EXEPTIONAL ERROR: Denominator cannot be zero.");
 	}
 	if (denominator < 0) {
 		numerator = -numerator;
