@@ -1,5 +1,6 @@
 #include "Declarations.h"
 
+// Section written by Christopher
 // Function to recursively display elements in the queue
 void displayQueueElements(queue<Rational>& rationals) {
     if (rationals.empty()) {
@@ -9,7 +10,7 @@ void displayQueueElements(queue<Rational>& rationals) {
     rationals.pop();
     cout << "│ " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " │";
     if (!rationals.empty()) {
-        cout << " » ";
+        cout << string(1, char(175));
     }
     displayQueueElements(rationals);
 }
@@ -27,32 +28,31 @@ void displayQueueMenu(const queue<Rational>& rationals) {
     }
     else {
         cout << "\n\tThe current queue contains " << static_cast<int>(rationals.size()) << " element(s):\n";
-        cout << "\n\t" + string(8, char(205)) << "\n";
-        cout << "\n\t" + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) << "\n";
-        cout << " in(rear) » ";
+        cout << "\n\t\t" + string(8, char(205)) << "\n";
+        cout << "\n\t\t" + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) << "\n";
+        cout << " in(rear) " + string(1, char(175));
         queue<Rational> tempQueue = rationals;
         displayQueueElements(tempQueue);
-        cout << " » out(front)";
-        cout << "\n\t" + string(1, char(192)) + string(6, char(196)) + string(1, char(217)) << "\n";
-        cout << "\n\t" + string(8, char(205)) << "\n";
+        cout << string(1, char(175)) << " out(front)";
+        cout << "\n\t\t" + string(1, char(192)) + string(6, char(196)) + string(1, char(217)) << "\n";
+        cout << "\n\t\t" + string(8, char(205)) << "\n";
     }
 
     green;
-    cout << "\n\tQueue Menu Options\n";
-    cout << "\n\t" + string(90, char(205)) << "\n";
+    cout << "\n\tQueue Menu Options";
+    cout << "\n\t" + string(90, char(205));
     res;
-    cout << "\n\t1. Enqueue (push into the rear)\n"
-        << "\n\t2. Rear (back)\n"
-        << "\n\t3. Front\n"
-        << "\n\t4. Dequeue (pop from the front)\n";
+    cout << "\n\t\t1. Enqueue (push into the rear)"
+        << "\n\t\t2. Rear (back)"
+        << "\n\t\t3. Front"
+        << "\n\t\t4. Dequeue (pop from the front)";
     green;
-    cout << "\n\t" + string(90, char(196)) << "\n";
+    cout << "\n\t" + string(90, char(196));
     res;
-    cout << "\n\t0. Return\n";
+    cout << "\n\t\t0. Return";
     green;
-    cout << "\n\t" + string(90, char(205)) << "\n";
+    cout << "\n\t" + string(90, char(205));
     res;
-    cout << "\n\tOption: ";
 }
 
 // Enqueue a new element into the queue
@@ -61,13 +61,11 @@ void enqueue(queue<Rational>& rationals) {
     cin >> r; // Uses the overloaded >> operator from Rational.h
 
     rationals.push(r);
-    cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) << "\n";
-    cout << "\n\t " + string(1, char(179)) << " " << setw(3) << r.getNumerator() << "/" << setw(2) << r.getDenominator() << " " + string(1, char(179)) << " will be enqueued (pushed) onto the queue.\n";
-    cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217)) << "\n";
+    cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191));
+    cout << "\n\t " + string(1, char(179)) << " " << setw(1) << r.getNumerator() << "/" << setw(2) << r.getDenominator() << " " + string(1, char(179)) << " will be enqueued (pushed) onto the queue.";
+    cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217))
+        << "\n";
 
-    cout << "\nPress any key to continue . . .";
-    cin.ignore();
-    cin.get();
 }
 
 // Display the rear element of the queue
@@ -78,13 +76,11 @@ void displayRear(queue<Rational>& rationals) {
     }
     else {
         auto rational = rationals.back();
-        cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) << "\n";
-        cout << "\n\t " + string(1, char(179)) << " " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " is at the back of the queue.\n";
-        cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217)) << "\n";
+        cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191));
+        cout << "\n\t " + string(1, char(179)) << " " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " is at the back of the queue.";
+        cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217))
+            << "\n";
     }
-    cout << "\nPress any key to continue . . .";
-    cin.ignore();
-    cin.get();
 }
 
 // Display the front element of the queue
@@ -95,13 +91,11 @@ void displayFront(queue<Rational>& rationals) {
     }
     else {
         auto rational = rationals.front();
-        cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) << "\n";
-        cout << "\n\t " + string(1, char(179)) << " " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " is at the front of the queue.\n";
-        cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217)) << "\n";
+        cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191));
+        cout << "\n\t " + string(1, char(179)) << " " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " is at the front of the queue.";
+        cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217))
+            << "\n";
     }
-    cout << "\nPress any key to continue . . .";
-    cin.ignore();
-    cin.get();
 }
 
 // Dequeue the front element from the queue
@@ -113,13 +107,11 @@ void dequeue(queue<Rational>& rationals) {
     else {
         auto rational = rationals.front();
         rationals.pop();
-        cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) << "\n";
-        cout << "\n\t " + string(1, char(179)) << " " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " will be dequeued (popped) from the queue.\n";
-        cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217)) << "\n";
+        cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191));
+        cout << "\n\t " + string(1, char(179)) << " " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " will be dequeued (popped) from the queue.";
+        cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217))
+            << "\n";
     }
-    cout << "\nPress any key to continue . . .";
-    cin.ignore();
-    cin.get();
 }
 
 // Queue menu handling
