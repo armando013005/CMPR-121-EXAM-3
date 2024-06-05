@@ -45,6 +45,9 @@ static void displaySingle(Rational r) {
 //vector
 void vectorMenu(vector<Rational>& rationals);
 void displayVectorMenu(const vector<Rational>& rationals);
+void outOfRange(const string& errorMessage);    // throw an errormessage if out of range
+void displayElements(const vector<Rational>& rationals, int index, int size); // display elements by recursion
+
 
 //linked list
 void displayLinkedListMenu(list<Rational>& rlist);

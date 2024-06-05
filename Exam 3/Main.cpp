@@ -52,7 +52,7 @@ void displayMenu() {
     cout << setw(3) << string(1, char(218)) << string(8, char(196)) << string(1, char(194)) << string(6, char(196)) << string(1, char(194)) << string(8, char(196)) << string(1, char(191)) << setw(6) << string(1, char(218)) << string(9, char(196)) << string(1, char(179)) << " " << string(1, char(218)) << string(7, char(196)) << string(3, char(196)) << string(1, char(179)) << " " << string(1, char(218)) << string(7, char(196)) << string(1, char(196)) << string(1, char(196)) << string(1, char(196)) << string(1, char(186)) << setw(6) << string(1, char(186)) << " " << string(1, char(179)) << "- 31 / 41 " << string(1, char(179)) << " " << string(1, char(186)) << setw(11) << " " << string(1, char(186)) << " " << string(1, char(179)) << "  39 / 49  " << string(1, char(179)) << " " << string(1, char(186)) << endl;
     cout << setw(2) << " " << string(1, char(179)) << "- 13/24 " << string(1, char(179)) << " 3/94 " << string(1, char(179)) << "- 25/36 " << string(1, char(179)) << setw(5) << string(1, char(187)) << string(1, char(179)) << " 11 / 23 " << string(1, char(186)) << string(1, char(187)) << string(1, char(179)) << "- 23 / 41 " << string(1, char(186)) << string(1, char(187)) << string(1, char(179)) << "- 53 / 61 " << string(1, char(186)) << setw(6) << string(1, char(186)) << " " << string(1, char(195)) << string(10, char(196)) << string(1, char(180)) << " " << string(1, char(186)) << setw(12) << string(1, char(186)) << " " << string(1, char(195)) << string(11, char(196)) << string(1, char(180)) << " " << string(1, char(186)) << endl;
     cout << setw(3) << string(1, char(218)) << string(8, char(196)) << string(1, char(194)) << string(6, char(196)) << string(1, char(194)) << string(8, char(196)) << string(1, char(191)) << setw(6) << string(1, char(218)) << string(9, char(196)) << string(1, char(179)) << " " << string(1, char(218)) << string(7, char(196)) << string(3, char(196)) << string(1, char(179)) << " " << string(1, char(218)) << string(7, char(196)) << string(1, char(196)) << string(1, char(196)) << string(1, char(196)) << string(1, char(186)) << setw(6) << string(1, char(186)) << " " << string(1, char(179)) << "  73 / 61 " << string(1, char(179)) << " " << string(1, char(186)) << setw(11) << " " << string(1, char(186)) << " " << string(1, char(179)) << "- 71 / 72  " << string(1, char(179)) << " " << string(1, char(186)) << endl;
-    cout << setw(3) << "0" << setw(9) << "1" << setw(7) << "2" << setw(18) << "head" << setw(39) << ;
+    cout << setw(3) << "0" << setw(9) << "1" << setw(7) << "2" << setw(18) << "head" << setw(39) ;
     res;
     cout << "\n\tVector" << setw(30) << "Linked List" << setw(40) << "Stack" << setw(30) << "Queue";
     cout << "\n\n\tA container is a holder object that stores a collection of other objects (its elements). They"
@@ -74,6 +74,5 @@ void displayMenu() {
     res;
     cout << "\n\t" + string(84, char(196)) << "\n"
         << "\n\tX. Exit\n"
-        << "\n\t" + string(90, char(205)) << "\n"
-        << "\n\tOption: ";
+        << "\n\t" + string(90, char(205)) << "\n";
 }

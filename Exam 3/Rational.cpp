@@ -4,18 +4,16 @@
 #include "input.h"
 
 // Custom gcd function
-static int gcd(int a, int b) {
-	while (b != 0) {
-		int t = b;
-		b = a % b;
-		a = t;
-	}
-	return a;
+static int gcd(int a, int b)
+{
+	if (a == 0)
+		return b;
+	return gcd(b % a, a);
 }
 
 void Rational::Normalize() {
 	if (denominator == 0) {
-		throw invalid_argument("EXEPTION ERROR: Denominator cannot be zero.");
+		throw invalid_argument("EXEPTIONAL ERROR: Denominator cannot be zero.");
 	}
 	if (denominator < 0) {
 		numerator = -numerator;
@@ -34,7 +32,6 @@ Rational::Rational(int num, int denom) : numerator(num), denominator(denom) {
 
 void Rational::setNumerator(int num) {
 	numerator = num;
-	Normalize();
 }
 
 void Rational::setDenominator(int denom) {
@@ -43,7 +40,6 @@ void Rational::setDenominator(int denom) {
 		return;
 	}
 	denominator = denom;
-	Normalize();
 }
 
 int Rational::getNumerator() const {
@@ -75,5 +71,6 @@ istream& operator>>(istream& in, Rational& r)
 
 	r.setNumerator(num);
 	r.setDenominator(den);
+	r.Normalize();
 	return in;
 }
