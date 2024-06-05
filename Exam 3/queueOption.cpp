@@ -1,18 +1,47 @@
 #include "Declarations.h"
 
 // Section written by Christopher
-// Function to recursively display elements in the queue
+// Function to display queue elements uniformly
+// Function to recursively display elements in a queue in the required format
 void displayQueueElements(queue<Rational>& rationals) {
     if (rationals.empty()) {
         return;
     }
+    
     auto rational = rationals.front();
     rationals.pop();
-    cout << "│ " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " │";
+    displayQueueElements(rationals);  // Recursive call before printing to keep the order from rear to front
+
+    cout << "│ " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << "│";
     if (!rationals.empty()) {
-        cout << string(1, char(175));
+        cout << string(1, char(175)); // Print arrow only if there is another element
     }
-    displayQueueElements(rationals);
+}
+
+
+// Simplified uniform border functions
+void displayTopBorder(int length) {
+    cout << "\t\t" << string(length * 8, char(205)) << char(187) << endl;
+}
+
+void displayBottomBorder(int length) {
+    cout << "\t\t" << string(length * 8, char(205)) << char(188) << endl;
+}
+
+void displayElementBorders(int length) {
+    cout << "\t\t";
+    for (int i = 0; i < length; i++) {
+        cout << char(218) << string(7, char(196)) << char(191) << " ";
+    }
+    cout << endl;
+}
+
+void displayElementFooters(int length) {
+    cout << "\t\t";
+    for (int i = 0; i < length; i++) {
+        cout << char(192) << string(7, char(196)) << char(217) << " ";
+    }
+    cout << endl;
 }
 
 // Display the queue menu
@@ -57,16 +86,22 @@ void displayQueueMenu(const queue<Rational>& rationals) {
 
 // Enqueue a new element into the queue
 void enqueue(queue<Rational>& rationals) {
-    Rational r;
-    cin >> r; // Uses the overloaded >> operator from Rational.h
+    try {
+        Rational r;
+        cout << "\n\tEnter a Rational number (numerator/denominator): ";
+        cin >> r;  // Assumes Rational has overloaded operator>> which might throw an exception
 
-    rationals.push(r);
-    cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191));
-    cout << "\n\t " + string(1, char(179)) << " " << setw(1) << r.getNumerator() << "/" << setw(2) << r.getDenominator() << " " + string(1, char(179)) << " will be enqueued (pushed) onto the queue.";
-    cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217))
-        << "\n";
-
+        rationals.push(r);
+        cout << "\n\t" << string(1, char(218)) + string(6, char(196)) + string(1, char(191));
+        cout << "\n\t" << string(1, char(179)) << " " << setw(1) << r.getNumerator() << "/" << setw(2) << r.getDenominator() << " " + string(1, char(179)) << " has been successfully enqueued (pushed) onto the queue.";
+        cout << "\n\t" << string(1, char(192)) + string(6, char(196)) + string(1, char(217)) << "\n";
+    }
+    catch (const exception& e) {
+        cout << "\n\tException caught: " << e.what() << "\n";
+        // If an exception is caught, you might want to handle specific recovery or cleanup here
+    }
 }
+
 
 // Display the rear element of the queue
 void displayRear(queue<Rational>& rationals) {
@@ -77,7 +112,7 @@ void displayRear(queue<Rational>& rationals) {
     else {
         auto rational = rationals.back();
         cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191));
-        cout << "\n\t " + string(1, char(179)) << " " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " is at the back of the queue.";
+        cout << "\n\t " + string(1, char(179)) << " " << setw(1) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " is at the back of the queue.";
         cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217))
             << "\n";
     }
@@ -92,7 +127,7 @@ void displayFront(queue<Rational>& rationals) {
     else {
         auto rational = rationals.front();
         cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191));
-        cout << "\n\t " + string(1, char(179)) << " " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " is at the front of the queue.";
+        cout << "\n\t " + string(1, char(179)) << " " << setw(1) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " is at the front of the queue.";
         cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217))
             << "\n";
     }
@@ -108,7 +143,7 @@ void dequeue(queue<Rational>& rationals) {
         auto rational = rationals.front();
         rationals.pop();
         cout << "\n\t " + string(1, char(218)) + string(6, char(196)) + string(1, char(191));
-        cout << "\n\t " + string(1, char(179)) << " " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " will be dequeued (popped) from the queue.";
+        cout << "\n\t " + string(1, char(179)) << " " << setw(1) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << " " + string(1, char(179)) << " will be dequeued (popped) from the queue.";
         cout << "\n\t " + string(1, char(192)) + string(6, char(196)) + string(1, char(217))
             << "\n";
     }
