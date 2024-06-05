@@ -114,6 +114,7 @@ void stackMenu(stack<Rational>& rationals) {
             catch (const exception& e)
             {
                 cout <<"\n\t\t" << e.what();
+                break;
             }
             cout << "\n\t\t";
             displaySingle(rationals.top());
