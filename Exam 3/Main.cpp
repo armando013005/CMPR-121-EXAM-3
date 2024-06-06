@@ -12,8 +12,8 @@ int main() {
 
     do {
         displayMenu();
-        option = inputChar("\n\tChoose an option: ");
-        switch (toupper(option)) {
+        option = toupper(inputChar("\n\tChoose an option: "));
+        switch (option) {
         case 'V': {
             vectorMenu(rationalsVector);
             break;
