@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Rational.h"
 #include "input.h" // Include the custom input functions header
 #include <iostream>
@@ -41,6 +41,11 @@ static void displaySingle(Rational r) {
     cout << '\t' << char(192) << string(7, char(196)) << char(217) << '\n';//bottom line
 
 }
+
+
+void displayTopLines(int size);
+void displayContent(Rational);
+void displayBottom(int);
 
 //vector
 void vectorMenu(vector<Rational>& rationals);
