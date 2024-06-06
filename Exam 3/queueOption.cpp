@@ -3,16 +3,37 @@
 // Section written by Christopher
 // Function to display queue elements uniformly
 // Function to recursively display elements in a queue in the required format
+static void displayContent(queue<Rational> rationals)
+{
+    if (rationals.empty())
+        return;
+
+    cout << setw(2) << right << string(1, char(179));
+    cout << setw(3) << right << rationals.front();
+
+    if (rationals.front().getNumerator() > 10 && rationals.front().getDenominator() < 10)
+        cout << right << setw(3) << string(1, char(179));
+    else if (rationals.front().getNumerator() > 10 || rationals.front().getDenominator() > 10)
+        cout << right << setw(2) << right << string(1, char(179));
+    else
+        cout << right << setw(3) << string(1, char(179));
+
+    cout <<" "+ string(1, char(175));
+    rationals.pop();
+
+    return displayContent(rationals);
+}
+
 void displayQueueElements(queue<Rational>& rationals) {
     if (rationals.empty()) {
         return;
     }
     
-    auto rational = rationals.front();
+    Rational rational = rationals.front();
     rationals.pop();
     displayQueueElements(rationals);  // Recursive call before printing to keep the order from rear to front
 
-    cout << "│ " << setw(3) << rational.getNumerator() << "/" << setw(2) << rational.getDenominator() << "│";
+    cout<<"\t"<<rational;
     if (!rationals.empty()) {
         cout << string(1, char(175)); // Print arrow only if there is another element
     }
@@ -20,26 +41,26 @@ void displayQueueElements(queue<Rational>& rationals) {
 
 
 // Simplified uniform border functions
-void displayTopBorder(int length) {
-    cout << "\t\t" << string(length * 8, char(205)) << char(187) << endl;
+static void displayTopBorder(int length) {
+    cout << "\t\t " << string(length * 11, char(205)) << "\n";
 }
 
-void displayBottomBorder(int length) {
-    cout << "\t\t" << string(length * 8, char(205)) << char(188) << endl;
+static void displayBottomBorder(int length) {
+    cout << "\t\t " << string(length * 11, char(205)) << "\n";
 }
 
 void displayElementBorders(int length) {
-    cout << "\t\t";
+    cout << "\t\t ";
     for (int i = 0; i < length; i++) {
-        cout << char(218) << string(7, char(196)) << char(191) << " ";
+        cout << char(218) << string(7, char(196)) << char(191) << "   ";
     }
     cout << endl;
 }
 
 void displayElementFooters(int length) {
-    cout << "\t\t";
+    cout << "\t\t ";
     for (int i = 0; i < length; i++) {
-        cout << char(192) << string(7, char(196)) << char(217) << " ";
+        cout << char(192) << string(7, char(196)) << char(217) << "   ";
     }
     cout << endl;
 }
@@ -57,14 +78,18 @@ void displayQueueMenu(const queue<Rational>& rationals) {
     }
     else {
         cout << "\n\tThe current queue contains " << static_cast<int>(rationals.size()) << " element(s):\n";
-        cout << "\n\t\t" + string(8, char(205)) << "\n";
-        cout << "\n\t\t" + string(1, char(218)) + string(6, char(196)) + string(1, char(191)) << "\n";
-        cout << " in(rear) " + string(1, char(175));
-        queue<Rational> tempQueue = rationals;
-        displayQueueElements(tempQueue);
-        cout << string(1, char(175)) << " out(front)";
-        cout << "\n\t\t" + string(1, char(192)) + string(6, char(196)) + string(1, char(217)) << "\n";
-        cout << "\n\t\t" + string(8, char(205)) << "\n";
+       
+
+        displayTopBorder(rationals.size());
+        displayElementBorders(rationals.size());
+        cout << " in(rear) " + string(1, char(175)) <<"\t";
+        displayContent(rationals);
+        cout << " out(front)\n";
+        displayElementFooters(rationals.size());
+        displayBottomBorder(rationals.size());
+      
+
+
     }
 
     green;
