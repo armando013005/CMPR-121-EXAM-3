@@ -41,25 +41,25 @@ void displayQueueElements(queue<Rational>& rationals) {
 
 
 // Simplified uniform border functions
-static void displayTopBorder(int length) {
-    cout << "\t\t " << string(length * 11, char(205)) << "\n";
+static void displayTopBorder(int size_t) {
+    cout << "\t\t " << string(size_t * 11, char(205)) << "\n";
 }
 
-static void displayBottomBorder(int length) {
-    cout << "\t\t " << string(length * 11, char(205)) << "\n";
+static void displayBottomBorder(int size_t) {
+    cout << "\t\t " << string(size_t * 11, char(205)) << "\n";
 }
 
-void displayElementBorders(int length) {
+void displayElementBorders(int size_t) {
     cout << "\t\t ";
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < size_t; i++) {
         cout << char(218) << string(7, char(196)) << char(191) << "   ";
     }
     cout << endl;
 }
 
-void displayElementFooters(int length) {
+void displayElementFooters(int size_t) {
     cout << "\t\t ";
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < size_t; i++) {
         cout << char(192) << string(7, char(196)) << char(217) << "   ";
     }
     cout << endl;
