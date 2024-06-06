@@ -244,7 +244,7 @@ void displayVectorMenu(const vector<Rational>& rationals)
     }
     else
     {
-        int size = rationals.size();
+        int size = int(rationals.size());
 
         cout << "\n\tThe current vector contains " << size << " element(s):\n";
 
@@ -259,7 +259,7 @@ void displayVectorMenu(const vector<Rational>& rationals)
         }
         cout << "\n\t\t";
 
-        displayElements(rationals, 0, rationals.size());
+        displayElements(rationals, 0, size);
 
         cout << "\n\t\t";
 
