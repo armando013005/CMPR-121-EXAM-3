@@ -1,4 +1,4 @@
-#include "Declarations.h"
+﻿#include "Declarations.h"
 
 
 // made by Thi Truong
@@ -45,9 +45,6 @@ void vectorMenu(vector<Rational>& rationals)
             try
             {
                 Rational temp;
-                /*cout << "\n\t\tInput a Rational number [numerator/denominator] to be inserted...";
-                int num = inputInteger("\n\t\t\tEnter a value (-99...99) for the numerator  : ", -99, 99);
-                int den = inputInteger("\t\t\tEnter a value (-99...99) for the denominator: ", -99, 99);*/
 
                 cin >> temp;
 
@@ -199,11 +196,24 @@ void vectorMenu(vector<Rational>& rationals)
 // Postcondition: display the value of rationals[index]
 void displayElements(const vector<Rational>& rationals, int index, int size)
 {
+    if (rationals.empty())
+        return;
     if (index < size)
     {
-        cout << setw(6) << right << rationals[index];
-        displayElements(rationals, index + 1, size);
+        cout << setw(1) << right << string(1, char(179));
+        cout << setw(3) << right << rationals[index];
+
+        if (rationals[index].getNumerator() > 10 && rationals[index].getDenominator() < 10)
+            cout << right << setw(3) << string(1, char(179));
+        else if (rationals[index].getNumerator() > 10 || rationals[index].getDenominator() > 10)
+            cout << right << setw(2) << right << string(1, char(179));
+        else
+            cout << right << setw(3) << string(1, char(179));
+
+        return displayElements(rationals, index + 1, size);
     }
+
+
 }
 
 
@@ -222,15 +232,36 @@ void displayVectorMenu(const vector<Rational>& rationals)
     }
     else
     {
-        cout << "\n\tThe current vector contains " << rationals.size() << " element(s):\n\n\t\t  ";
+        int size = rationals.size();
+
+        cout << "\n\tThe current vector contains " << size << " element(s):\n";
+
+        // Display the elements
+        
+        cout << "\n\t\t";
+
+        // Display the top line
+        for (int i = 0; i < size; i++)
+        {
+            cout << char(218) << string(7, char(196)) << char(191);
+        }
+        cout << "\n\t\t";
 
         displayElements(rationals, 0, rationals.size());
 
-        cout << "\n\n\tIndex: ";
+        cout << "\n\t\t";
+
+        // Display the bottom line
+        for (int i = 0; i < size; i++)
+        {
+            cout << char(192) << string(7, char(196)) << char(217) ;//bottom line  └─┘
+        }
+
+        cout << "\n\n\tIndex:   ";
 
         for (int i = 0; i < rationals.size(); i++)
         {
-            cout << setw(9) << right << i;
+            cout << setw(9) << left << i;
         }
 
         cout << "\n\n\tstarting address: " << &rationals[0];
