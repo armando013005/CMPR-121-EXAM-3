@@ -30,7 +30,7 @@ void vectorMenu(vector<Rational>& rationals)
 
                 rationals.push_back(Rational(num, den));
 
-                cout << "\n\t\t"; displaySingle(rationals.back());  cout << " will be added to the back of the vector.\n\n";
+                cout << "\n\t\t"; displaySingle(rationals.back());  cout << "\t\t  will be added to the back of the vector.\n\n";
             }
             catch (const exception& e)
             {
@@ -55,7 +55,7 @@ void vectorMenu(vector<Rational>& rationals)
 
                 cout << "\n\t\t";
                 displaySingle(rationals[pos]);
-                cout << " will be inserted at index " << pos << " to the vector.\n\n";
+                cout << "\t\t  will be inserted at index " << pos << " to the vector.\n\n";
             }
             catch (const exception& e)
             {
@@ -76,7 +76,11 @@ void vectorMenu(vector<Rational>& rationals)
                 if (pos >= rationals.size())
                     outOfRange("\n\t\tEXCEPTIONAL ERROR: invalid vector subscript.\n\n");
 
-                cout << "\n\t\t" << rationals[pos] << " is located at index(" << pos << ") from the vector.\n\n";
+                cout << "\n\t\t";
+
+                displaySingle(rationals[pos]);
+
+                cout << "\t\t is located at index(" << pos << ") from the vector.\n\n";
 
                 cout << "\n\t\t" << &rationals[pos] << "\n\n";
 
@@ -113,19 +117,27 @@ void vectorMenu(vector<Rational>& rationals)
                     case 'O':
                     {
                         rationals.erase(it);
-                        cout << "\n\t\t" << objToBeRemoved << " will be removed from the vector.\n\n";
+                        cout << "\n\t\t";
+                        displaySingle(objToBeRemoved);
+                        cout << "\t\t will be removed from the vector.\n\n";
                         break;
                     }
                     case 'A':
                     {
                         rationals.erase(remove(rationals.begin(), rationals.end(), objToBeRemoved), rationals.end());
-                        cout << "\n\t\t" << objToBeRemoved << " will be removed from the vector.\n\n";
+                        cout << "\n\t\t";
+                        displaySingle(objToBeRemoved);
+                        cout << "\t\t will be removed from the vector.\n\n";
                         break;
                     }
                     }
                 }
                 else
-                    cout << "\n\t\t" << objToBeRemoved << " cannot be found from the vector.\n\n";
+                {
+                    cout << "\n\t\t";
+                    displaySingle(objToBeRemoved);
+                    cout << "\t\t is not found from the vector.\n\n";
+                }
             }
 
             catch (const string& error)

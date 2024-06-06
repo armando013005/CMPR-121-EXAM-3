@@ -73,7 +73,7 @@ void addElement(Rational& r, list<Rational>& addList)
 		cin >> r;
 	}
 	catch(const exception& e){
-		cout << e.what();
+		cout << e.what() << '\n';
 		return;
 	}
 
@@ -109,7 +109,7 @@ void insertElement(Rational& r, list<Rational>& insertList)
 		cin >> r;
 	}
 	catch (const exception& e) {
-		cout << e.what();
+		cout << e.what() << '\n';
 		return;
 	}
 
@@ -179,7 +179,7 @@ void removeElement(Rational& r, list<Rational>& removeList)
 			cin >> r;
 		}
 		catch (const exception& e) {
-			cout << e.what();
+			cout << e.what() << '\n';
 			return;
 		}
 		int position = 0;
